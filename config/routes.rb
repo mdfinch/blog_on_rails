@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   get("/", to: "posts#index") 
 
   # configures all routes for posts
-  resources :posts
+  resources :posts do
+    resources :comments, only [:create, :destroy]
+  end
 end
