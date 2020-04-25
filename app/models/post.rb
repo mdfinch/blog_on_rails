@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
     before_validation(:capitalize_title)
 
-    validates(:title, presence: true, uniqness: true )
+    validates(:title, presence: true, uniqueness: true )
     validates(:body, 
         presence: {message: "Body must be longer than 50 characters", length: {minimum: 50}}
     )
@@ -13,5 +13,3 @@ private
     end
 
 end
-
-git add . && git commit -m ""
