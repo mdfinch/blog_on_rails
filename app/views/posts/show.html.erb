@@ -3,3 +3,16 @@
 <h2>Id: <%= @post.id %> </h2>
 <h3> Title: <%= @post.title %></h3>
 <h4> Body: <%= @post.body %> </h4>
+
+<div>
+    <%= link_to(
+        "Edit", edit_post_path(@post),
+        class: 'btn btn-info'
+    )%>
+    <%= link_to(
+        "Delete", post_path(@post),
+        method: :delete,
+        class: 'btn btn-danger',
+        data: { confirm: 'Are you sure?' }
+    )%>
+</div>
