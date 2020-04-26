@@ -1,4 +1,5 @@
 class Comment < ApplicationRecord
   belongs_to :post
-  validates presence: true
+  
+  validates :body, presence: true
 end

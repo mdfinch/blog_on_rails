@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
         @comment = Comment.new(params.require(:comment).permit(:body))
         @comment.post = @post
         if @comment.save
-            redirect_to post_path(@post)
+            redirect_to post_path(@post), notice: "Comment created!"
         else
             @comments = @comment.posts.order(created_at: :desc)
             render 'posts/show'

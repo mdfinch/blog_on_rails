@@ -16,3 +16,44 @@
         data: { confirm: 'Are you sure?' }
     )%>
 </div>
+
+<hr />
+
+<%= form_for [@post, @comment] do |f| %>
+  <% if @comment.errors.present? %>
+    <p>
+      <%= @comment.errors.full_messages.join(', ') %>
+    </p>
+  <% end %>
+  <div>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+  <%= f.submit %>
+<% end %>
+
+<ul class="list-group answer-list">
+  <% @comments.each do |comment| %>
+    <li class="list-group-item">
+      <p>
+        <%= comment.body %><br />
+        <small>
+          <%= link_to(
+            "Delete",
+            post_comment_path(@post, comment),
+            method: :delete, 
+            data: {
+              confirm: "Are you sure?"
+            },
+            class: 'btn btn-danger btn-sm',
+          ) %>
+        </small>
+        |
+        <small>
+        Answered <%= time_ago_in_words(comment.created_at) %>
+        </small>
+      </p>
+    </li>
+  <% end %>
+</ul>
+</div>
