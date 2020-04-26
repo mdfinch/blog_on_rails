@@ -6,6 +6,6 @@ Rails.application.routes.draw do
 
   # configures all routes for posts
   resources :posts do
-    resources :comments, only [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
   end
 end
