@@ -13,5 +13,9 @@
         <%= f.label :body %>
         <%= f.text_area(:body, class: 'form-control', cols: 50, rows: 5)%>
     </div>
-        <%= f.submit("Create", class: 'btn btn-primary') %>
+    <% if @post.new_record? %>  
+            <%= f.submit("Create Post", class: 'btn btn-outline-primary') %>
+    <% else %>
+            <%= f.submit("Update Post", class: 'btn btn-outline-primary') %>           
+    <% end %>
 <% end %>
