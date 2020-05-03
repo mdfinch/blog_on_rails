@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # root path is set to show index page
   get("/", to: "posts#index") 
 
+  resources :users, only: [:new, :create]
+
   # configures all routes for posts
   resources :posts do
     resources :comments, only: [:create, :destroy]
