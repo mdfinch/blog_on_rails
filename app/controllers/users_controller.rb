@@ -8,7 +8,7 @@ class UsersController < ApplicationController
         @user = User.new params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
         if @user.save
             flash.delete(:warning)
-            redirect_to products_path
+            redirect_to posts_path
         else
             flash[:warning] = "Unable to create new user"
             render :new
