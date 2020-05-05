@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
+    before_action :authorize!, only: [:edit, :update, :destroy]
 
     def index
         @posts = Post.all.order("id DESC")
@@ -44,4 +45,11 @@ class PostsController < ApplicationController
             render :edit
         end
     end
+
+    private
+
+    def authorize! 
+      redirect_to root_path, alert: 'Not Authorized' unless can?(:crud, Post)
+    end
+
 end
