@@ -2,7 +2,7 @@
 <h5><%= @post.body %> </h5>
 
 <p>
-    Posted <%= time_ago_in_words(@post.created_at) %> ago
+    Posted <%= time_ago_in_words(@post.created_at) %> ago by <%= @post.user.first_name @post.user.last_name%>
 </p>
 <div>
     <%= link_to(
@@ -38,7 +38,7 @@
       <p>
         <%= comment.body %><br />
         <small>
-        Commented <%= time_ago_in_words(comment.created_at) %> ago
+        Commented <%= time_ago_in_words(comment.created_at) %> ago by <%= @post.user.first_name @post.user.last_name%>
         </small>  
         <small>&nbsp &#8226</small>
         <small>
