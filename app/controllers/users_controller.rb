@@ -28,6 +28,18 @@ class UsersController < ApplicationController
         end
     end
 
-    private
+    def edit_password
+        @user = User.find(params[:id])
+    end
 
+    def update_password
+        @user = User.find(params[:id])
+        
+        if @user.update(params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation))
+            redirect_to posts_path
+        else
+            render :edit_password
+        end
+    end
+    
 end

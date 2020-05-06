@@ -35,7 +35,9 @@
 
             <%= f.submit("Create User", class: 'btn btn-outline-primary') %>
         <% else %>
-            <%= f.submit("Update User", class: 'btn btn-outline-primary') %>          
+            <%= f.submit("Update User", class: 'btn btn-outline-primary') %>
+            <hr>
+            <%= link_to "Change Password", edit_password_path %>          
         <% end %>
 
     <% end %>
