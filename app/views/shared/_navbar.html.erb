@@ -21,7 +21,7 @@
                 <h3 class="d-inline-block nav-link">
                     <% if user_signed_in? %>
                         <%= link_to "Logout", session_path, method: :delete, class: 'btn btn-danger' %>
-                        <%= current_user.first_name %> <%= current_user.last_name %>
+                        <%= link_to  current_user.full_name, edit_user_path(current_user) %>
                     <% else %>
                         <%= link_to "Log In", new_session_path, class: 'btn btn-success'%>
                     <% end %>

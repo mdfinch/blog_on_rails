@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # root path is set to show index page
   get("/", to: "posts#index") 
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :edit, :update]
 
   resource :session, only: [:new, :create, :destroy]
 
