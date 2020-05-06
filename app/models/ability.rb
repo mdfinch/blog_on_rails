@@ -12,9 +12,9 @@ class Ability
     #   else
     #     can :read, :all
     #   end
-    # if user.is_admin?
-    #     can :manage, :all 
-    # end
+    if user.is_admin?
+        can :manage, :all 
+    end
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.
@@ -33,7 +33,6 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
-  end
 
     alias_action :create, :read, :update, :destroy, to: :crud
 
@@ -45,4 +44,5 @@ class Ability
         comment.user == user 
     end
     
+    end
 end
