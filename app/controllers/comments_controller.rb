@@ -21,6 +21,7 @@ class CommentsController < ApplicationController
             redirect_to post_path(@comment.post)
         else
             head :unauthorized
+        end
     end
 
 end

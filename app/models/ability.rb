@@ -36,13 +36,13 @@ class Ability
 
     alias_action :create, :read, :update, :destroy, to: :crud
 
-    can(:crud, Post) do |post| 
-        post.user == user 
-    end
+        can(:crud, Post) do |post| 
+            post.user == user 
+        end
 
-    can(:crud, Comment) do |comment|
-        comment.user == user 
-    end
+        can(:crud, Comment) do |comment|
+            comment.user == user 
+        end
     
     end
 end
