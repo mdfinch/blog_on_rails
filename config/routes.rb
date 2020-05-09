@@ -13,8 +13,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
-  get('/user/:id/password', to: 'users#edit_password', as: :edit_password)
+  get('/users/:id/password', to: 'users#edit_password', as: :edit_password)
   
-  patch('/user/:id/password', to: 'users#update_password', as: :update_password)
+  patch('/users/:id/password', to: 'users#update_password', as: :update_password)
 
 end
