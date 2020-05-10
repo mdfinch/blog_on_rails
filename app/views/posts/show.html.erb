@@ -2,8 +2,10 @@
 <h5><%= @post.body %> </h5>
 
 <p>
-    Posted <%= time_ago_in_words(@post.created_at) %> ago
+    Posted <%= time_ago_in_words(@post.created_at) %> ago by <%= @post.user.first_name%> <%= @post.user.last_name%>
 </p>
+
+<% if can? :crud, @post %>
 <div>
     <%= link_to(
         "Edit", edit_post_path(@post),
@@ -16,6 +18,7 @@
         data: { confirm: 'Are you sure?' }
     )%>
 </div>
+<% end %>
 
 <hr />
 <h3>Comment</h3>
@@ -35,24 +38,26 @@
 <ul class="list-group answer-list">
   <% @comments.each do |comment| %>
     <li class="list-group-item">
-      <p>
-        <%= comment.body %><br />
-        <small>
-        Commented <%= time_ago_in_words(comment.created_at) %> ago
-        </small>  
-        <small>&nbsp &#8226</small>
-        <small>
-          <%= link_to(
-            "Delete",
-            post_comment_path(@post, comment),
-            method: :delete, 
-            data: {
-              confirm: "Are you sure?"
-            },
-            class: 'btn btn-link',
-          ) %>
-        </small>
-      </p>
+        <p>
+            <%= comment.body %><br />
+            <small>
+            Commented <%= time_ago_in_words(comment.created_at) %> ago by <%= comment.user.first_name%> <%= comment.user.last_name%>
+            </small>  
+            <% if can? :crud, comment %>
+            <small>&nbsp &#8226</small>
+            <small>
+            <%= link_to(
+                "Delete",
+                post_comment_path(@post, comment),
+                method: :delete, 
+                data: {
+                confirm: "Are you sure?"
+                },
+                class: 'btn btn-link',
+            ) %>
+            </small>
+            <% end %>
+        </p>
     </li>
   <% end %>
 </ul>

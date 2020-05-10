@@ -4,8 +4,17 @@ Rails.application.routes.draw do
   # root path is set to show index page
   get("/", to: "posts#index") 
 
+  resources :users, only: [:new, :create, :edit, :update]
+
+  resource :session, only: [:new, :create, :destroy]
+
   # configures all routes for posts
   resources :posts do
     resources :comments, only: [:create, :destroy]
   end
+
+  get('/users/:id/password', to: 'users#edit_password', as: :edit_password)
+  
+  patch('/users/:id/password', to: 'users#update_password', as: :update_password)
+
 end
